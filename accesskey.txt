@@ -1,5 +1,0 @@
-user:serverless
-Access key ID:AKIAXF5TU7FEWEGHW3UC
-Secret access key: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
-
-serverless config credentials --provider aws --key AKIAXF5TU7FEWEGHW3UC --secret 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 --profile serverless
