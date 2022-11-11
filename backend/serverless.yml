@@ -1,7 +1,7 @@
 # TODO: Change the name of the org 
 org: beakal
-app: serverless-todo-app
-service: serverless-todo-app
+app: serverless-todo
+service: serverless-todo
 
 plugins:
   - serverless-webpack
@@ -26,9 +26,10 @@ provider:
     PROJECT_NAME: serverless-todo-app
     TODOS_TABLE: serverless-todo-app-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: serverless-c4-todo-images-${self:provider.stage}
+    #ATTACHMENT_S3_BUCKET: serverless-c4-todo-images-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-c4-todo-images-3zbce-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
-
+    
 custom:
   documentation:
     api:
@@ -302,3 +303,13 @@ resources:
               Action: 's3:GetObject'
               Resource: 'arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/*'
         Bucket: !Ref AttachmentsBucket
+            - Sid: ModifyBucketPolicy
+              Effect: Allow
+              Principal: '*'
+              Action: [
+                    “s3:GetBucketPolicy”,
+                    “s3:PutBucketPolicy”
+                      ],
+              Resource: 'arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/*'
+        Bucket: !Ref AttachmentsBucket
+ 

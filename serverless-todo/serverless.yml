@@ -11,9 +11,9 @@
 #
 # Happy Coding!
 
-service: serverless-todo-app
+service: serverless-todo
 # app and org for use with dashboard.serverless.com
-app: serverless-udagram-app
+app: serverless-todo
 org: beakal
 
 # You can pin your service to only deploy with a specific Serverless version
